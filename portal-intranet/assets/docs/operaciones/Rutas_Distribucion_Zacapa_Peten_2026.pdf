@@ -1,0 +1,91 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 4411 >>
+stream
+0.05 0.22 0.38 rg 36 716 540 46 re f
+BT /F2 8.5 Tf 0.75 0.88 1 rg 46 746 Td (GRUPO LOGÍSTICO CENTRAL, S.A.  |  REPOSITORIO DOCUMENTAL CORPORATIVO \(glcentral.local\)) Tj ET
+BT /F2 11.5 Tf 1 1 1 rg 46 728 Td (MATRIZ DE RUTAS DE DISTRIBUCIÓN CORREDOR NORORIENTE, ZACAPA Y PETÉN 2026) Tj ET
+0.95 0.96 0.98 rg 36 664 540 44 re f
+0.78 0.82 0.88 RG 0.6 w 36 664 540 44 re S
+BT /F2 8.5 Tf 0.12 0.25 0.42 rg 44 694 Td (Código: GLC-OP-RZP-011    |    Versión: Vigencia T4-2026    |    Fecha de vigencia: 24 Oct 2026) Tj ET
+BT /F1 8.5 Tf 0.20 0.20 0.20 rg 44 681 Td (Área responsable: Centro de Planificación y Tráfico Nacional) Tj ET
+BT /F2 8.5 Tf 0.70 0.12 0.18 rg 44 669 Td (Clasificación RBAC: Restringido - Grupo AD: GRP-Operaciones) Tj ET
+BT /F2 9 Tf 0.12 0.31 0.47 rg 36 646 Td (Resumen Ejecutivo:) Tj ET
+BT /F1 9 Tf 0.18 0.18 0.18 rg 36 633 Td (Matriz oficial de rutas nocturnas al corredor Nororiente \(CA-9 Norte, Zacapa, Izabal y Petén\),) Tj ET
+BT /F1 9 Tf 0.18 0.18 0.18 rg 36 621 Td (tiempos estimados de tránsito y puntos de control.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 603 Td (1. Ventanas de Despacho Nocturno) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 590 Td (Las unidades asignadas al corredor Nororiente salen de los muelles 1 al 4 del CD Regional Norte) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 578 Td (entre las 21:30 y las 23:00 horas para optimizar el tránsito por la carretera CA-9 Norte.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 558 Td (2. Puntos de Reporte Obligatorio) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 545 Td (Los pilotos deben confirmar paso por El Rancho \(km 84\), Río Hondo \(km 136\), Morales \(km 245\) y) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 533 Td (Santa Elena Petén \(km 475\).) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 509 Td (Itinerario Oficial de Rutas - Corredor Nororiente y Petén \(2026\)) Tj ET
+0.12 0.31 0.47 rg 36 489 540 18 re f
+BT /F2 7.8 Tf 1 1 1 rg 40 494 Td (Código Ruta) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 205 494 Td (Origen -> Destino) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 290 494 Td (Distancia / Tiempo Est.) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 375 494 Td (Unidades Asignadas) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 460 494 Td (Horario Salida) Tj ET
+1 1 1 rg 36 471 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 471 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 476 Td (RUT-NOR-01) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 205 476 Td (CD Central -> Zacapa / Chiquimula) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 290 476 Td (168 km / 3 h 45 min) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 375 476 Td (Cabezales C-104, C-108, C-112) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 460 476 Td (21:30 h \(Lunes a Sábado\)) Tj ET
+0.95 0.97 0.99 rg 36 453 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 453 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 458 Td (RUT-NOR-02) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 205 458 Td (CD Central -> Puerto Barrios / Morales) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 290 458 Td (295 km / 6 h 10 min) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 375 458 Td (Cabezales C-115, C-119, C-121) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 460 458 Td (22:00 h \(Lunes a Sábado\)) Tj ET
+1 1 1 rg 36 435 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 435 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 440 Td (RUT-PET-01) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 205 440 Td (CD Central -> Río Dulce -> Santa Elena Petén) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 290 440 Td (482 km / 9 h 30 min) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 375 440 Td (Unidades C-124, C-127, C-130) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 460 440 Td (20:30 h \(Martes, Jueves, Sábado\)) Tj ET
+0.95 0.97 0.99 rg 36 417 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 417 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 422 Td (RUT-ALT-01) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 205 422 Td (CD Norte -> Cobán / Carchá \(CA-14\)) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 290 422 Td (214 km / 4 h 50 min) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 375 422 Td (Camiones Rígidos R-201, R-205) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 460 422 Td (05:00 h \(Diario\)) Tj ET
+0.80 0.84 0.88 RG 0.8 w 36 62 540 0 re S
+BT /F2 8 Tf 0.25 0.25 0.25 rg 36 48 Td (Documento oficial vigente en el Repositorio Documental Corporativo de Grupo Logístico Central, S.A.) Tj ET
+BT /F1 7.5 Tf 0.40 0.40 0.40 rg 36 36 Td (Servidor: WIN-H16MMIV7IS7.glcentral.local \(192.168.124.128\)  |  Control de acceso: RBAC Active Directory + Bitácora SHA-256) Tj ET
+
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000010 00000 n 
+0000000062 00000 n 
+0000000122 00000 n 
+0000000261 00000 n 
+0000000361 00000 n 
+0000000466 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+4935
+%%EOF

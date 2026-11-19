@@ -1,0 +1,96 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 4982 >>
+stream
+0.05 0.22 0.38 rg 36 716 540 46 re f
+BT /F2 8.5 Tf 0.75 0.88 1 rg 46 746 Td (GRUPO LOGÍSTICO CENTRAL, S.A.  |  REPOSITORIO DOCUMENTAL CORPORATIVO \(glcentral.local\)) Tj ET
+BT /F2 11.5 Tf 1 1 1 rg 46 728 Td (CÓDIGO DE ÉTICA, CONDUCTA Y SEGURIDAD DE LA INFORMACIÓN) Tj ET
+0.95 0.96 0.98 rg 36 664 540 44 re f
+0.78 0.82 0.88 RG 0.6 w 36 664 540 44 re S
+BT /F2 8.5 Tf 0.12 0.25 0.42 rg 44 694 Td (Código: GLC-DG-CEC-002    |    Versión: Versión 3.1 - Vigente 2026    |    Fecha de vigencia: 20 Feb 2026) Tj ET
+BT /F1 8.5 Tf 0.20 0.20 0.20 rg 44 681 Td (Área responsable: Comité de Ética y Cumplimiento Corporativo) Tj ET
+BT /F2 8.5 Tf 0.70 0.12 0.18 rg 44 669 Td (Clasificación RBAC: Público Interno - Todos los colaboradores) Tj ET
+BT /F2 9 Tf 0.12 0.31 0.47 rg 36 646 Td (Resumen Ejecutivo:) Tj ET
+BT /F1 9 Tf 0.18 0.18 0.18 rg 36 633 Td (Principios éticos, manejo de información confidencial, prevención de conflictos de interés y) Tj ET
+BT /F1 9 Tf 0.18 0.18 0.18 rg 36 621 Td (uso responsable de activos digitales.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 603 Td (1. Valores Institucionales) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 590 Td (Grupo Logístico Central, S.A. fundamenta su operación en la integridad, la puntualidad logística,) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 578 Td (el respeto a las personas, la confidencialidad de la información de clientes y la transparencia) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 566 Td (financiera.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 546 Td (2. Confidencialidad y Protección de Datos) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 533 Td (Los documentos alojados en las carpetas departamentales del Repositorio Documental están sujetos a) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 521 Td (control de acceso por rol \(RBAC\). Queda prohibida su divulgación a terceros no autorizados.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 501 Td (3. Canal de Consultas y Reportes) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 488 Td (Cualquier incidente de seguridad de la información o incumplimiento ético debe reportarse de) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 476 Td (inmediato a través de la Mesa de Servicios del portal o directamente al Comité de Ética.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 452 Td (Clasificación Institucional de la Información) Tj ET
+0.12 0.31 0.47 rg 36 432 540 18 re f
+BT /F2 7.8 Tf 1 1 1 rg 40 437 Td (Nivel) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 225 437 Td (Grupo AD Autorizado) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 345 437 Td (Ejemplos de Documentos) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 455 437 Td (Control Aplicado) Tj ET
+1 1 1 rg 36 414 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 414 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 419 Td (Público Interno) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 419 Td (Todos los usuarios autenticados) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 419 Td (Reglamento interno, código de ética, organigrama) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 419 Td (Autenticación de dominio \(LDAP / SSO\)) Tj ET
+0.95 0.97 0.99 rg 36 396 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 396 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 401 Td (Restringido Operativo) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 401 Td (GRP-Operaciones) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 401 Td (Hojas de ruta, manuales de flota, protocolos de muelle) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 401 Td (RBAC + Bitácora SHA-256) Tj ET
+1 1 1 rg 36 378 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 378 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 383 Td (Confidencial RRHH) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 383 Td (GRP-RRHH) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 383 Td (Tabulador salarial, expedientes, evaluaciones) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 383 Td (RBAC + Bloqueo 403 a otras áreas) Tj ET
+0.95 0.97 0.99 rg 36 360 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 360 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 365 Td (Confidencial Financiero) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 365 Td (GRP-Administracion) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 365 Td (Presupuesto anual, estados financieros auditados) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 365 Td (RBAC + Bloqueo 403 a otras áreas) Tj ET
+1 1 1 rg 36 342 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 342 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 347 Td (Secreto Técnico TI) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 347 Td (GRP-TI-Administradores) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 347 Td (Diagramas de red, direccionamiento IP, respaldos AD) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 347 Td (RBAC + Restricción IP subred interna) Tj ET
+0.80 0.84 0.88 RG 0.8 w 36 62 540 0 re S
+BT /F2 8 Tf 0.25 0.25 0.25 rg 36 48 Td (Documento oficial vigente en el Repositorio Documental Corporativo de Grupo Logístico Central, S.A.) Tj ET
+BT /F1 7.5 Tf 0.40 0.40 0.40 rg 36 36 Td (Servidor: WIN-H16MMIV7IS7.glcentral.local \(192.168.124.128\)  |  Control de acceso: RBAC Active Directory + Bitácora SHA-256) Tj ET
+
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000010 00000 n 
+0000000062 00000 n 
+0000000122 00000 n 
+0000000261 00000 n 
+0000000361 00000 n 
+0000000466 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+5506
+%%EOF

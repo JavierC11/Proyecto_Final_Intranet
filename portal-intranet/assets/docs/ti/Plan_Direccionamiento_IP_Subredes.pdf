@@ -1,0 +1,94 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 4722 >>
+stream
+0.05 0.22 0.38 rg 36 716 540 46 re f
+BT /F2 8.5 Tf 0.75 0.88 1 rg 46 746 Td (GRUPO LOGÍSTICO CENTRAL, S.A.  |  REPOSITORIO DOCUMENTAL CORPORATIVO \(glcentral.local\)) Tj ET
+BT /F2 11.5 Tf 1 1 1 rg 46 728 Td (PLAN MAESTRO DE DIRECCIONAMIENTO IP Y REGISTROS DNS \(glcentral.local\)) Tj ET
+0.95 0.96 0.98 rg 36 664 540 44 re f
+0.78 0.82 0.88 RG 0.6 w 36 664 540 44 re S
+BT /F2 8.5 Tf 0.12 0.25 0.42 rg 44 694 Td (Código: GLC-TI-PDI-041    |    Versión: Versión 3.0 - Noviembre 2026    |    Fecha de vigencia: 25 Sep 2026) Tj ET
+BT /F1 8.5 Tf 0.20 0.20 0.20 rg 44 681 Td (Área responsable: Administración de Redes y Telecomunicaciones TI) Tj ET
+BT /F2 8.5 Tf 0.70 0.12 0.18 rg 44 669 Td (Clasificación RBAC: Secreto Técnico - Exclusivo GRP-TI-Administradores) Tj ET
+BT /F2 9 Tf 0.12 0.31 0.47 rg 36 646 Td (Resumen Ejecutivo:) Tj ET
+BT /F1 9 Tf 0.18 0.18 0.18 rg 36 633 Td (Plan maestro de direccionamiento IPv4 estático, registros DNS de la zona glcentral.local y) Tj ET
+BT /F1 9 Tf 0.18 0.18 0.18 rg 36 621 Td (segmentación lógica por sedes.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 603 Td (1. Asignación Estática en el Segmento de Servidores \(192.168.124.0/24\)) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 590 Td (El controlador de dominio y servidor web mantiene la dirección IPv4 fija 192.168.124.128 con) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 578 Td (máscara 255.255.255.0 \(/24\), puerta de enlace predeterminada 192.168.124.2 y servidor DNS primario) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 566 Td (apuntando a 127.0.0.1.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 546 Td (2. Registros en Zona DNS Integrada en Active Directory) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 533 Td (La zona directa glcentral.local resuelve los nombres intranet.glcentral.local,) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 521 Td (web01.glcentral.local, dc01.glcentral.local y win-h16mmiv7is7.glcentral.local hacia) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 509 Td (192.168.124.128.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 485 Td (Inventario de Direccionamiento IP y Nombres DNS del Dominio glcentral.local) Tj ET
+0.12 0.31 0.47 rg 36 465 540 18 re f
+BT /F2 7.8 Tf 1 1 1 rg 40 470 Td (Nombre DNS \(FQDN\)) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 225 470 Td (Dirección IPv4) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 345 470 Td (Rol / Servicio Asignado) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 455 470 Td (Método IP) Tj ET
+1 1 1 rg 36 447 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 447 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 452 Td (dc01.glcentral.local) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 452 Td (192.168.124.128) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 452 Td (Controlador de Dominio AD DS, DNS y KDC Kerberos) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 452 Td (Estático \(Manual\)) Tj ET
+0.95 0.97 0.99 rg 36 429 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 429 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 434 Td (web01.glcentral.local) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 434 Td (192.168.124.128) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 434 Td (Servidor Web IIS 10 + PHP 8.3 FastCGI + SQLite 3) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 434 Td (Estático \(Manual\)) Tj ET
+1 1 1 rg 36 411 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 411 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 416 Td (intranet.glcentral.local) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 416 Td (192.168.124.128) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 416 Td (Nombre canónico del Portal Corporativo \(Certificado SSL\)) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 416 Td (Registro A en DNS) Tj ET
+0.95 0.97 0.99 rg 36 393 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 393 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 398 Td (Gateway / Enrutador Virtual) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 398 Td (192.168.124.2) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 398 Td (Puerta de enlace predeterminada y reenviador DNS) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 398 Td (Infraestructura VMware) Tj ET
+1 1 1 rg 36 375 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 375 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 380 Td (Estación Anfitriona / Gestión) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 380 Td (192.168.124.1) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 380 Td (Puesto de administración y pruebas de acceso HTTPS) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 380 Td (Adaptador VMnet8) Tj ET
+0.80 0.84 0.88 RG 0.8 w 36 62 540 0 re S
+BT /F2 8 Tf 0.25 0.25 0.25 rg 36 48 Td (Documento oficial vigente en el Repositorio Documental Corporativo de Grupo Logístico Central, S.A.) Tj ET
+BT /F1 7.5 Tf 0.40 0.40 0.40 rg 36 36 Td (Servidor: WIN-H16MMIV7IS7.glcentral.local \(192.168.124.128\)  |  Control de acceso: RBAC Active Directory + Bitácora SHA-256) Tj ET
+
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000010 00000 n 
+0000000062 00000 n 
+0000000122 00000 n 
+0000000261 00000 n 
+0000000361 00000 n 
+0000000466 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+5246
+%%EOF

@@ -1,0 +1,93 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 5059 >>
+stream
+0.05 0.22 0.38 rg 36 716 540 46 re f
+BT /F2 8.5 Tf 0.75 0.88 1 rg 46 746 Td (GRUPO LOGÍSTICO CENTRAL, S.A.  |  REPOSITORIO DOCUMENTAL CORPORATIVO \(glcentral.local\)) Tj ET
+BT /F2 11.5 Tf 1 1 1 rg 46 728 Td (REGLAMENTO INTERNO DE TRABAJO Y OPERACIÓN LOGÍSTICA 2026) Tj ET
+0.95 0.96 0.98 rg 36 664 540 44 re f
+0.78 0.82 0.88 RG 0.6 w 36 664 540 44 re S
+BT /F2 8.5 Tf 0.12 0.25 0.42 rg 44 694 Td (Código: GLC-DG-RIT-001    |    Versión: Edición 2026 \(Rev. 4\)    |    Fecha de vigencia: 15 Ene 2026) Tj ET
+BT /F1 8.5 Tf 0.20 0.20 0.20 rg 44 681 Td (Área responsable: Dirección General y Recursos Humanos) Tj ET
+BT /F2 8.5 Tf 0.70 0.12 0.18 rg 44 669 Td (Clasificación RBAC: Público Interno - Todos los colaboradores) Tj ET
+BT /F2 9 Tf 0.12 0.31 0.47 rg 36 646 Td (Resumen Ejecutivo:) Tj ET
+BT /F1 9 Tf 0.18 0.18 0.18 rg 36 633 Td (Normativa laboral aplicable a todas las sedes operativas, centros de distribución y oficinas) Tj ET
+BT /F1 9 Tf 0.18 0.18 0.18 rg 36 621 Td (centrales de Grupo Logístico Central, S.A.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 603 Td (1. Objeto y Ámbito de Aplicación) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 590 Td (El presente Reglamento Interno de Trabajo regula las condiciones laborales, horarios de operación,) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 578 Td (normas de seguridad en planta y derechos de los colaboradores de Grupo Logístico Central, S.A. en) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 566 Td (Oficina Central \(Zona 12, Ciudad de Guatemala\) y en los Centros de Distribución Regionales \(Norte,) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 554 Td (Oriente y Occidente\).) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 534 Td (2. Jornada Ordinaria y Turnos de Operación) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 521 Td (El personal administrativo en Oficina Central \(VLAN 20\) cumple jornada diurna de lunes a viernes) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 509 Td (de 08:00 a 17:00 horas. Los Centros de Distribución y muelles de carga \(VLAN 30\) operan bajo) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 497 Td (esquema de tres turnos rotativos supervisados por la Coordinación de Operaciones.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 477 Td (3. Uso de Sistemas Informáticos e Intranet) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 464 Td (Toda cuenta de dominio en Active Directory \(glcentral.local\) es personal e intransferible. El) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 452 Td (acceso al Portal Corporativo y a la Mesa de Servicios debe realizarse exclusivamente mediante) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 440 Td (conexión cifrada HTTPS o inicio de sesión integrado de Windows \(SSO\).) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 416 Td (Horarios Oficiales por Sede y Modalidad Operativa) Tj ET
+0.12 0.31 0.47 rg 36 396 540 18 re f
+BT /F2 7.8 Tf 1 1 1 rg 40 401 Td (Sede / Centro) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 225 401 Td (Área) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 345 401 Td (Horario Ordinario) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 455 401 Td (Supervisor Responsable) Tj ET
+1 1 1 rg 36 378 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 378 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 383 Td (Oficina Central \(VLAN 20\)) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 383 Td (Administración, Finanzas, RRHH y TI) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 383 Td (Lunes a Viernes 08:00 - 17:00 h) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 383 Td (Jefaturas Departamentales) Tj ET
+0.95 0.97 0.99 rg 36 360 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 360 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 365 Td (CD Regional Norte \(VLAN 30\)) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 365 Td (Bodega, Muelles 1-6 y Despacho) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 365 Td (Turno A: 06:00-14:00 / Turno B: 14:00-22:00) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 365 Td (Roberto Gómez \(Coordinador\)) Tj ET
+1 1 1 rg 36 342 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 342 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 347 Td (Flota de Transporte Pesado) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 347 Td (Rutas Nacionales y Centroamérica) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 347 Td (Según hoja de ruta autorizada y bitácora GPS) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 347 Td (Centro de Control Logístico) Tj ET
+0.95 0.97 0.99 rg 36 324 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 324 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 329 Td (Mesa de Ayuda TI \(Ext. 1004\)) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 329 Td (Soporte Técnico e Infraestructura) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 329 Td (Lunes a Sábado 07:00 - 19:00 h \(Guardia 24/7\)) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 329 Td (Carlos Daniel López \(Jefe TI\)) Tj ET
+0.80 0.84 0.88 RG 0.8 w 36 62 540 0 re S
+BT /F2 8 Tf 0.25 0.25 0.25 rg 36 48 Td (Documento oficial vigente en el Repositorio Documental Corporativo de Grupo Logístico Central, S.A.) Tj ET
+BT /F1 7.5 Tf 0.40 0.40 0.40 rg 36 36 Td (Servidor: WIN-H16MMIV7IS7.glcentral.local \(192.168.124.128\)  |  Control de acceso: RBAC Active Directory + Bitácora SHA-256) Tj ET
+
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000010 00000 n 
+0000000062 00000 n 
+0000000122 00000 n 
+0000000261 00000 n 
+0000000361 00000 n 
+0000000466 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+5583
+%%EOF

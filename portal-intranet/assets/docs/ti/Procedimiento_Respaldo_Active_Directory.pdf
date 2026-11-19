@@ -1,0 +1,88 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 4453 >>
+stream
+0.05 0.22 0.38 rg 36 716 540 46 re f
+BT /F2 8.5 Tf 0.75 0.88 1 rg 46 746 Td (GRUPO LOGÍSTICO CENTRAL, S.A.  |  REPOSITORIO DOCUMENTAL CORPORATIVO \(glcentral.local\)) Tj ET
+BT /F2 11.5 Tf 1 1 1 rg 46 728 Td (PROCEDIMIENTO DE RESPALDO DE ACTIVE DIRECTORY, BASE DE DATOS Y AUDITORÍA) Tj ET
+0.95 0.96 0.98 rg 36 664 540 44 re f
+0.78 0.82 0.88 RG 0.6 w 36 664 540 44 re S
+BT /F2 8.5 Tf 0.12 0.25 0.42 rg 44 694 Td (Código: GLC-TI-PRA-042    |    Versión: Estándar Operativo TI - Octubre 2026    |    Fecha de vigencia: 04 Oct 2026) Tj ET
+BT /F1 8.5 Tf 0.20 0.20 0.20 rg 44 681 Td (Área responsable: Jefatura de Infraestructura y Continuidad del Negocio) Tj ET
+BT /F2 8.5 Tf 0.70 0.12 0.18 rg 44 669 Td (Clasificación RBAC: Secreto Técnico - Exclusivo GRP-TI-Administradores) Tj ET
+BT /F2 9 Tf 0.12 0.31 0.47 rg 36 646 Td (Resumen Ejecutivo:) Tj ET
+BT /F1 9 Tf 0.18 0.18 0.18 rg 36 633 Td (Política de copias de seguridad del estado del sistema de Active Directory, base de datos) Tj ET
+BT /F1 9 Tf 0.18 0.18 0.18 rg 36 621 Td (SQLite de la Mesa de Servicios y bitácora SHA-256.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 603 Td (1. Alcance del Plan de Respaldo) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 590 Td (El procedimiento cubre tres activos críticos del servidor: \(a\) el Estado del Sistema de Active) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 578 Td (Directory \(NTDS.dit, SYSVOL y zona DNS integrada\), \(b\) el archivo transaccional) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 566 Td (C:\\IntranetData\\db\\intranet.db y \(c\) los certificados X.509 y archivos de auditoría en) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 554 Td (C:\\IntranetData\\logs\\.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 534 Td (2. Verificación de Integridad Post-Respaldo) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 521 Td (Antes de archivar cada respaldo diario, se ejecuta la función auditVerify\(\) para confirmar que la) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 509 Td (cadena de hashes SHA-256 de la tabla audit_log no presenta alteraciones.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 485 Td (Matriz de Respaldo y Recuperación ante Desastres \(RPO / RTO\)) Tj ET
+0.12 0.31 0.47 rg 36 465 540 18 re f
+BT /F2 7.8 Tf 1 1 1 rg 40 470 Td (Componente Crítico) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 225 470 Td (Ruta en el Servidor) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 345 470 Td (Frecuencia) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 455 470 Td (RPO / RTO Objetivo) Tj ET
+1 1 1 rg 36 447 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 447 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 452 Td (Base de datos Mesa de Servicios y Auditoría) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 452 Td (C:\\IntranetData\\db\\intranet.db) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 452 Td (Diaria + modo continuo WAL) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 452 Td (RPO < 15 min / RTO < 10 min) Tj ET
+0.95 0.97 0.99 rg 36 429 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 429 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 434 Td (Active Directory \(NTDS + SYSVOL + DNS\)) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 434 Td (C:\\Windows\\NTDS y C:\\Windows\\SYSVOL) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 434 Td (Diaria nocturna \(23:00 h\)) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 434 Td (RPO 24 h / RTO < 1 hora) Tj ET
+1 1 1 rg 36 411 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 411 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 416 Td (Configuración y Certificado SSL/TLS) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 416 Td (C:\\IntranetData\\config\\*) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 416 Td (En cada cambio + semanal) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 416 Td (RPO inmediato / RTO < 5 min) Tj ET
+0.95 0.97 0.99 rg 36 393 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 393 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 398 Td (Código fuente del Portal e IIS web.config) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 398 Td (C:\\inetpub\\wwwroot\\* -> C:\\IntranetData\\backup) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 398 Td (En cada despliegue) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 398 Td (RPO inmediato / RTO < 5 min) Tj ET
+0.80 0.84 0.88 RG 0.8 w 36 62 540 0 re S
+BT /F2 8 Tf 0.25 0.25 0.25 rg 36 48 Td (Documento oficial vigente en el Repositorio Documental Corporativo de Grupo Logístico Central, S.A.) Tj ET
+BT /F1 7.5 Tf 0.40 0.40 0.40 rg 36 36 Td (Servidor: WIN-H16MMIV7IS7.glcentral.local \(192.168.124.128\)  |  Control de acceso: RBAC Active Directory + Bitácora SHA-256) Tj ET
+
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000010 00000 n 
+0000000062 00000 n 
+0000000122 00000 n 
+0000000261 00000 n 
+0000000361 00000 n 
+0000000466 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+4977
+%%EOF

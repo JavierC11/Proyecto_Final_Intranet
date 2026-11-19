@@ -1,0 +1,18 @@
+services:
+  glc-intranet:
+    build: .
+    container_name: glc-intranet
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+      - "8443:443"
+    environment:
+      - GLC_DATA=/data
+    volumes:
+      - glc-data:/data
+      - ./data/config:/data/config:ro
+    command: >
+      bash -c "mkdir -p /data/db /data/logs /data/sessions /data/docs && chown -R www-data:www-data /data/db /data/logs /data/sessions /data/docs && chmod -R 775 /data/db /data/logs /data/sessions /data/docs && php /opt/glc/scripts/seed.php && apache2-foreground"
+
+volumes:
+  glc-data:

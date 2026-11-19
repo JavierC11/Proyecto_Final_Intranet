@@ -1,0 +1,87 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Length 4309 >>
+stream
+0.05 0.22 0.38 rg 36 716 540 46 re f
+BT /F2 8.5 Tf 0.75 0.88 1 rg 46 746 Td (GRUPO LOGÍSTICO CENTRAL, S.A.  |  REPOSITORIO DOCUMENTAL CORPORATIVO \(glcentral.local\)) Tj ET
+BT /F2 11.5 Tf 1 1 1 rg 46 728 Td (ORGANIGRAMA GENERAL NACIONAL Y ESTRUCTURA DE DOMINIO 2026) Tj ET
+0.95 0.96 0.98 rg 36 664 540 44 re f
+0.78 0.82 0.88 RG 0.6 w 36 664 540 44 re S
+BT /F2 8.5 Tf 0.12 0.25 0.42 rg 44 694 Td (Código: GLC-DG-ORG-003    |    Versión: Aprobado Junta Directiva - Marzo 2026    |    Fecha de vigencia: 02 Mar 2026) Tj ET
+BT /F1 8.5 Tf 0.20 0.20 0.20 rg 44 681 Td (Área responsable: Dirección General y Desarrollo Organizacional) Tj ET
+BT /F2 8.5 Tf 0.70 0.12 0.18 rg 44 669 Td (Clasificación RBAC: Público Interno - Todos los colaboradores) Tj ET
+BT /F2 9 Tf 0.12 0.31 0.47 rg 36 646 Td (Resumen Ejecutivo:) Tj ET
+BT /F1 9 Tf 0.18 0.18 0.18 rg 36 633 Td (Estructura orgánica nacional de Grupo Logístico Central, S.A., unidades organizativas en Active) Tj ET
+BT /F1 9 Tf 0.18 0.18 0.18 rg 36 621 Td (Directory y responsables de área.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 603 Td (1. Estructura Directiva y Gerencial) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 590 Td (La compañía se organiza bajo una Dirección General de la cual dependen cuatro gerencias operativas) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 578 Td (y de soporte: Administración y Finanzas, Recursos Humanos, Operaciones y Logística, y Tecnologías) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 566 Td (de la Información.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 546 Td (2. Correspondencia con Active Directory \(glcentral.local\)) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 533 Td (Cada gerencia cuenta con su propia Unidad Organizativa dentro de OU=Usuarios,DC=glcentral,DC=local) Tj ET
+BT /F1 9 Tf 0.15 0.15 0.15 rg 36 521 Td (y un grupo de seguridad global en OU=Grupos que gobierna sus permisos dentro de la intranet.) Tj ET
+BT /F2 10 Tf 0.08 0.28 0.48 rg 36 497 Td (Estructura de Unidades Organizativas y Responsables Titulares \(2026\)) Tj ET
+0.12 0.31 0.47 rg 36 477 540 18 re f
+BT /F2 7.8 Tf 1 1 1 rg 40 482 Td (Gerencia / Departamento) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 225 482 Td (Unidad Organizativa \(AD\)) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 345 482 Td (Grupo de Seguridad RBAC) Tj ET
+BT /F2 7.8 Tf 1 1 1 rg 455 482 Td (Titular / Contacto) Tj ET
+1 1 1 rg 36 459 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 459 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 464 Td (Tecnologías de la Información) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 464 Td (OU=TI,OU=Usuarios) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 464 Td (GRP-TI-Administradores) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 464 Td (Carlos Daniel López \(clopez@glcentral.local - Ext. 1004\)) Tj ET
+0.95 0.97 0.99 rg 36 441 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 441 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 446 Td (Recursos Humanos) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 446 Td (OU=RRHH,OU=Usuarios) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 446 Td (GRP-RRHH) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 446 Td (María Morales Solís \(mmorales@glcentral.local - Ext. 1002\)) Tj ET
+1 1 1 rg 36 423 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 423 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 428 Td (Administración y Finanzas) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 428 Td (OU=Administracion,OU=Usuarios) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 428 Td (GRP-Administracion) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 428 Td (Juan Pérez \(jperez@glcentral.local - Ext. 1003\)) Tj ET
+0.95 0.97 0.99 rg 36 405 540 18 re f
+0.82 0.85 0.88 RG 0.4 w 36 405 540 18 re S
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 40 410 Td (Operaciones y Logística) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 225 410 Td (OU=Operaciones,OU=Usuarios) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 345 410 Td (GRP-Operaciones) Tj ET
+BT /F1 7.4 Tf 0.15 0.15 0.15 rg 455 410 Td (Roberto Gómez \(rgomez@glcentral.local - Ext. 2105\)) Tj ET
+0.80 0.84 0.88 RG 0.8 w 36 62 540 0 re S
+BT /F2 8 Tf 0.25 0.25 0.25 rg 36 48 Td (Documento oficial vigente en el Repositorio Documental Corporativo de Grupo Logístico Central, S.A.) Tj ET
+BT /F1 7.5 Tf 0.40 0.40 0.40 rg 36 36 Td (Servidor: WIN-H16MMIV7IS7.glcentral.local \(192.168.124.128\)  |  Control de acceso: RBAC Active Directory + Bitácora SHA-256) Tj ET
+
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000010 00000 n 
+0000000062 00000 n 
+0000000122 00000 n 
+0000000261 00000 n 
+0000000361 00000 n 
+0000000466 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+4833
+%%EOF
