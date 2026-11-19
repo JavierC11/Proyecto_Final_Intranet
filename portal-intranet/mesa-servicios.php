@@ -1,5 +1,6 @@
 <?php
-$pageTitle = "Mesa de Servicios";
+$pageTitle = 'Mesa de servicios';
+$pageDesc  = 'Reporte y seguimiento de incidentes y requerimientos técnicos internos.';
 require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/mesa-helpers.php';
 
@@ -87,157 +88,168 @@ $kpi = $pdo->prepare("SELECT
 $kpi->execute($alcanceParams);
 $k = $kpi->fetch() ?: [];
 
+$badgeEstado = [
+    'Abierto'    => 'badge-blue',
+    'En proceso' => 'badge-amber',
+    'En espera'  => 'badge-gray',
+    'Resuelto'   => 'badge-green',
+    'Cerrado'    => 'badge-gray'
+];
+$badgePrioridad = [
+    'Baja'    => 'badge-gray',
+    'Media'   => 'badge-blue',
+    'Alta'    => 'badge-orange',
+    'Crítica' => 'badge-red'
+];
 ?>
 
-<div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-    <div>
-        <h1 class="text-2xl font-bold text-slate-900 flex items-center gap-2.5">
-            <i class="fa-solid fa-headset text-sky-600"></i> Mesa de Servicios
-        </h1>
-        <p class="text-xs text-slate-500 mt-1">
-            Reporte de incidentes y solicitudes internas. Cada ticket queda ligado a su cuenta de dominio y a su departamento.
-        </p>
+<div class="figure-row mb-3">
+    <div class="figure">
+        <div class="label">Abiertos</div>
+        <div class="value"><?php echo (int)($k['abiertos'] ?? 0); ?></div>
     </div>
-    <div class="bg-slate-100 px-3.5 py-1.5 rounded-lg border border-slate-200 text-xs text-slate-600">
-        Alcance de consulta: <strong class="text-sky-700"><?php echo e($alcanceTxt); ?></strong>
+    <div class="figure">
+        <div class="label">En proceso</div>
+        <div class="value"><?php echo (int)($k['proceso'] ?? 0); ?></div>
+    </div>
+    <div class="figure">
+        <div class="label">Resueltos / cerrados</div>
+        <div class="value"><?php echo (int)($k['resueltos'] ?? 0); ?></div>
+    </div>
+    <div class="figure">
+        <div class="label">Críticos activos</div>
+        <div class="value"><?php echo (int)($k['criticos'] ?? 0); ?></div>
     </div>
 </div>
 
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-    <?php
-    $cards = [
-        ['Abiertos', $k['abiertos'] ?? 0, 'fa-envelope-open-text', 'bg-amber-50 text-amber-600'],
-        ['En proceso', $k['proceso'] ?? 0, 'fa-gears', 'bg-blue-50 text-blue-600'],
-        ['Resueltos / cerrados', $k['resueltos'] ?? 0, 'fa-circle-check', 'bg-emerald-50 text-emerald-600'],
-        ['Críticos activos', $k['criticos'] ?? 0, 'fa-triangle-exclamation', 'bg-rose-50 text-rose-600'],
-    ];
-    foreach ($cards as $c): ?>
-        <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm flex items-center gap-3">
-            <div class="w-11 h-11 rounded-xl <?php echo $c[3]; ?> flex items-center justify-center text-lg"><i class="fa-solid <?php echo $c[2]; ?>"></i></div>
-            <div>
-                <span class="text-[11px] font-semibold text-slate-500 uppercase"><?php echo e($c[0]); ?></span>
-                <div class="text-2xl font-bold text-slate-900"><?php echo (int)$c[1]; ?></div>
-            </div>
-        </div>
-    <?php endforeach; ?>
-</div>
-
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<div class="grid grid-side">
 
     <!-- Formulario de nuevo ticket -->
-    <div class="lg:col-span-4">
-        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm lg:sticky lg:top-24">
-            <h2 class="text-base font-bold text-slate-900 mb-1 flex items-center gap-2">
-                <i class="fa-solid fa-plus-circle text-sky-600"></i> Nuevo ticket
-            </h2>
-            <p class="text-xs text-slate-500 mb-4">Se registrará a nombre de <strong><?php echo e($u['nombre']); ?></strong>.</p>
+    <div>
+        <div class="panel" id="nuevo">
+            <div class="panel-head">
+                <h2>Nueva solicitud</h2>
+            </div>
+            <div class="panel-body">
+                <p class="small muted mb-2">Se registrará a nombre de <strong><?php echo e($u['nombre']); ?></strong>.</p>
 
-            <?php if ($error): ?>
-                <div class="mb-3 bg-rose-50 border-l-4 border-rose-500 p-2.5 rounded text-xs text-rose-700"><?php echo e($error); ?></div>
-            <?php endif; ?>
+                <?php if ($error): ?>
+                    <div class="alert alert-error"><?php echo e($error); ?></div>
+                <?php endif; ?>
 
-            <form method="POST" action="mesa-servicios.php" class="space-y-3">
-                <?php echo csrfField(); ?>
-                <input type="hidden" name="accion" value="crear">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1" for="titulo">Asunto</label>
-                    <input id="titulo" name="titulo" type="text" required maxlength="120" value="<?php echo e($form['titulo']); ?>"
-                           placeholder="Ej. No puedo imprimir en el equipo de Finanzas"
-                           class="w-full py-2 px-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500">
-                </div>
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1" for="categoria">Categoría</label>
-                        <select id="categoria" name="categoria" class="w-full py-2 px-2 border border-slate-300 rounded-lg text-xs">
-                            <?php foreach (TICKET_CATEGORIAS as $c): ?>
-                                <option value="<?php echo e($c); ?>" <?php echo $form['categoria'] === $c ? 'selected' : ''; ?>><?php echo e($c); ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                <form method="POST" action="mesa-servicios.php" class="form">
+                    <?php echo csrfField(); ?>
+                    <input type="hidden" name="accion" value="crear">
+                    <div class="form-row">
+                        <label for="titulo">Asunto</label>
+                        <input id="titulo" name="titulo" type="text" required maxlength="120" value="<?php echo e($form['titulo']); ?>"
+                               placeholder="Ej. Problema con impresora de Finanzas">
                     </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1" for="prioridad">Prioridad</label>
-                        <select id="prioridad" name="prioridad" class="w-full py-2 px-2 border border-slate-300 rounded-lg text-xs">
-                            <?php foreach (TICKET_PRIORIDADES as $p): ?>
-                                <option value="<?php echo e($p); ?>" <?php echo $form['prioridad'] === $p ? 'selected' : ''; ?>><?php echo e($p); ?></option>
-                            <?php endforeach; ?>
-                        </select>
+                    <div class="grid grid-2">
+                        <div class="form-row">
+                            <label for="categoria">Categoría</label>
+                            <select id="categoria" name="categoria">
+                                <?php foreach (TICKET_CATEGORIAS as $c): ?>
+                                    <option value="<?php echo e($c); ?>" <?php echo $form['categoria'] === $c ? 'selected' : ''; ?>><?php echo e($c); ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <label for="prioridad">Prioridad</label>
+                            <select id="prioridad" name="prioridad">
+                                <?php foreach (TICKET_PRIORIDADES as $p): ?>
+                                    <option value="<?php echo e($p); ?>" <?php echo $form['prioridad'] === $p ? 'selected' : ''; ?>><?php echo e($p); ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1" for="descripcion">Descripción</label>
-                    <textarea id="descripcion" name="descripcion" rows="4" required maxlength="2000"
-                              placeholder="Describa el problema o la solicitud con el mayor detalle posible."
-                              class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500"><?php echo e($form['descripcion']); ?></textarea>
-                </div>
-                <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2.5 px-4 rounded-lg text-sm shadow-md transition flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-paper-plane"></i> Registrar ticket
-                </button>
-            </form>
+                    <div class="form-row">
+                        <label for="descripcion">Descripción</label>
+                        <textarea id="descripcion" name="descripcion" rows="4" required maxlength="2000"
+                                  placeholder="Detalle la solicitud o el problema con el mayor detalle posible..."><?php echo e($form['descripcion']); ?></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Registrar solicitud</button>
+                </form>
+            </div>
         </div>
     </div>
 
     <!-- Listado -->
-    <div class="lg:col-span-8">
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-            <form method="GET" action="mesa-servicios.php" class="p-4 border-b border-slate-200 bg-slate-50 grid grid-cols-1 md:grid-cols-12 gap-3">
-                <div class="md:col-span-6 relative">
-                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 text-sm"><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input type="text" name="q" maxlength="60" value="<?php echo e($q); ?>" placeholder="Buscar por folio, asunto o solicitante..."
-                           class="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm">
-                </div>
-                <div class="md:col-span-4">
-                    <select name="estado" class="w-full py-2 px-3 border border-slate-300 rounded-lg text-sm">
-                        <option value="todos">Todos los estados</option>
-                        <?php foreach (TICKET_ESTADOS as $s): ?>
-                            <option value="<?php echo e($s); ?>" <?php echo $fEstado === $s ? 'selected' : ''; ?>><?php echo e($s); ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
-                <div class="md:col-span-2">
-                    <button class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2 px-4 rounded-lg text-sm">Filtrar</button>
-                </div>
-            </form>
+    <div>
+        <div class="panel">
+            <div class="panel-head">
+                <h2>Solicitudes registradas</h2>
+                <span class="muted small"><?php echo e($alcanceTxt); ?></span>
+            </div>
+            <div class="panel-body">
+                <form method="GET" action="mesa-servicios.php" class="form form-inline">
+                    <div class="form-row">
+                        <input type="search" name="q" maxlength="60" value="<?php echo e($q); ?>" placeholder="Buscar por folio, asunto o solicitante..." style="min-width: 240px;">
+                    </div>
+                    <div class="form-row">
+                        <select name="estado">
+                            <option value="todos">Todos los estados</option>
+                            <?php foreach (TICKET_ESTADOS as $s): ?>
+                                <option value="<?php echo e($s); ?>" <?php echo $fEstado === $s ? 'selected' : ''; ?>><?php echo e($s); ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Filtrar</button>
+                    <?php if ($q !== '' || $fEstado !== 'todos'): ?>
+                        <a href="mesa-servicios.php" class="btn btn-sm">Limpiar</a>
+                    <?php endif; ?>
+                </form>
+            </div>
 
             <?php if (!$tickets): ?>
-                <div class="p-12 text-center text-sm text-slate-500">No hay tickets que coincidan con la búsqueda.</div>
+                <div class="empty">No hay solicitudes que coincidan con la búsqueda.</div>
             <?php else: ?>
-            <div class="overflow-x-auto">
-            <table class="w-full text-xs">
-                <thead class="bg-slate-50 text-slate-500 uppercase text-[10px] tracking-wider">
-                    <tr>
-                        <th class="text-left px-4 py-2.5">Folio</th>
-                        <th class="text-left px-4 py-2.5">Asunto</th>
-                        <th class="text-left px-4 py-2.5">Prioridad</th>
-                        <th class="text-left px-4 py-2.5">Estado</th>
-                        <th class="text-left px-4 py-2.5">Solicitante</th>
-                        <th class="text-left px-4 py-2.5">Fecha</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100">
-                <?php foreach ($tickets as $t): ?>
-                    <tr class="hover:bg-slate-50">
-                        <td class="px-4 py-3 font-mono font-bold text-sky-700 whitespace-nowrap">
-                            <a href="ticket.php?id=<?php echo (int)$t['id']; ?>"><?php echo e($t['folio']); ?></a>
-                        </td>
-                        <td class="px-4 py-3">
-                            <a href="ticket.php?id=<?php echo (int)$t['id']; ?>" class="font-semibold text-slate-800 hover:text-sky-700"><?php echo e($t['titulo']); ?></a>
-                            <div class="text-[10px] text-slate-400"><?php echo e($t['categoria']); ?></div>
-                        </td>
-                        <td class="px-4 py-3 whitespace-nowrap"><?php echo badgePrioridad($t['prioridad']); ?></td>
-                        <td class="px-4 py-3 whitespace-nowrap"><?php echo badgeEstado($t['estado']); ?></td>
-                        <td class="px-4 py-3 text-slate-600">
-                            <?php echo e($t['solicitante_nombre']); ?>
-                            <div class="text-[10px] text-slate-400"><?php echo e($t['departamento']); ?></div>
-                        </td>
-                        <td class="px-4 py-3 text-slate-500 whitespace-nowrap"><?php echo e(substr($t['creado_en'], 0, 10)); ?></td>
-                    </tr>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
-            </div>
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Folio</th>
+                                <th>Asunto</th>
+                                <th>Prioridad</th>
+                                <th>Estado</th>
+                                <th>Solicitante</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($tickets as $t): ?>
+                            <tr>
+                                <td class="nowrap mono">
+                                    <a href="ticket.php?id=<?php echo (int)$t['id']; ?>"><strong><?php echo e($t['folio']); ?></strong></a>
+                                </td>
+                                <td>
+                                    <div><a href="ticket.php?id=<?php echo (int)$t['id']; ?>"><strong><?php echo e($t['titulo']); ?></strong></a></div>
+                                    <div class="small muted"><?php echo e($t['categoria']); ?></div>
+                                </td>
+                                <td class="nowrap">
+                                    <span class="badge <?php echo $badgePrioridad[$t['prioridad']] ?? 'badge-gray'; ?>"><?php echo e($t['prioridad']); ?></span>
+                                </td>
+                                <td class="nowrap">
+                                    <span class="badge <?php echo $badgeEstado[$t['estado']] ?? 'badge-gray'; ?>"><?php echo e($t['estado']); ?></span>
+                                </td>
+                                <td>
+                                    <div><?php echo e($t['solicitante_nombre']); ?></div>
+                                    <div class="small muted"><?php echo e($t['departamento']); ?></div>
+                                </td>
+                                <td class="nowrap small muted"><?php echo e(substr($t['creado_en'], 0, 10)); ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-foot flex between items-center small muted">
+                    <span>Mostrando <?php echo count($tickets); ?> solicitudes.</span>
+                    <span>Alcance: <?php echo e($alcanceTxt); ?></span>
+                </div>
             <?php endif; ?>
         </div>
     </div>
+
 </div>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

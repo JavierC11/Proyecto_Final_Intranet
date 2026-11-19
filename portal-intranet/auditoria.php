@@ -1,23 +1,18 @@
 <?php
-$pageTitle = "Bitácora de Auditoría";
+$pageTitle = 'Bitácora de auditoría';
+$pageDesc  = 'Registro inmutable de eventos de seguridad y accesos al sistema con encadenamiento SHA-256.';
 require_once __DIR__ . '/includes/header.php';
 
 if (!can('auditoria.ver')) {
     denegarAcceso('auditoria.php', 'auditoria.ver (GRP-TI-Administradores)');
     ?>
-    <div class="max-w-2xl mx-auto my-12 bg-white rounded-2xl border border-rose-200 p-8 text-center shadow-lg">
-        <span class="bg-rose-100 text-rose-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">
-            HTTP 403 Forbidden - Acceso Restringido
-        </span>
-        <h2 class="text-xl font-bold text-slate-900 mb-2">Bitácora exclusiva del equipo de TI</h2>
-        <p class="text-xs text-slate-600 leading-relaxed mb-6">
-            La consulta de auditoría requiere pertenecer al grupo <code class="bg-rose-50 text-rose-700 px-2 py-0.5 rounded font-mono font-bold">GRP-TI-Administradores</code>.
-            El intento quedó registrado.
-        </p>
-        <a href="index.php" class="bg-slate-800 hover:bg-slate-900 text-white text-xs font-semibold py-2 px-4 rounded-lg inline-flex items-center gap-2">
-            <i class="fa-solid fa-arrow-left"></i> Volver al Inicio
-        </a>
-    </div>
+    <div class="panel"><div class="panel-body">
+        <div class="alert alert-error">
+            No tiene permiso para consultar la bitácora de auditoría. Se requiere membresía en el grupo <code>GRP-TI-Administradores</code> de Active Directory.
+        </div>
+        <p class="muted small mb-2">Este módulo está restringido exclusivamente a los auditores y administradores de TI.</p>
+        <a class="btn" href="index.php">Volver al inicio</a>
+    </div></div>
     <?php
     require_once __DIR__ . '/includes/footer.php';
     exit;
@@ -92,28 +87,26 @@ $s = $stats->fetch();
 
 function colorResultado(string $r): string
 {
-    return ['OK' => 'bg-emerald-100 text-emerald-800', 'FALLO' => 'bg-rose-100 text-rose-800', 'DENEGADO' => 'bg-rose-100 text-rose-800',
-            'BLOQUEADO' => 'bg-orange-100 text-orange-800', 'ERROR' => 'bg-orange-100 text-orange-800',
-            'EXPIRADA' => 'bg-slate-200 text-slate-700', 'INFO' => 'bg-sky-100 text-sky-800'][$r] ?? 'bg-slate-100 text-slate-700';
+    return match ($r) {
+        'OK'                         => 'badge-green',
+        'FALLO', 'DENEGADO', 'ERROR' => 'badge-red',
+        'BLOQUEADO'                  => 'badge-orange',
+        default                      => 'badge-gray',
+    };
 }
 $qs = http_build_query(array_filter(['usuario' => $fUsuario, 'resultado' => $fResultado, 'accion' => $fAccion, 'desde' => $fDesde]));
 ?>
 
-<div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-    <div>
-        <h1 class="text-2xl font-bold text-slate-900 flex items-center gap-2.5">
-            <i class="fa-solid fa-clipboard-list text-sky-600"></i> Bitácora de Auditoría
-        </h1>
-        <p class="text-xs text-slate-500 mt-1">
-            Registro de inicios de sesión, accesos denegados y operaciones sobre la Mesa de Servicios. Cada evento se encadena con un hash SHA-256.
-        </p>
+<div class="toolbar">
+    <div class="flex items-center gap-2">
+        <span class="muted small"><?php echo $totalFilas; ?> eventos registrados</span>
     </div>
-    <div class="flex gap-2">
-        <a href="auditoria.php?verificar=1&<?php echo e($qs); ?>" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold px-3 py-2 rounded-lg flex items-center gap-1.5">
-            <i class="fa-solid fa-shield-halved text-emerald-600"></i> Verificar integridad
+    <div class="flex gap-1">
+        <a href="auditoria.php?verificar=1&<?php echo e($qs); ?>" class="btn btn-sm">
+            <i class="fa-solid fa-shield-halved text-green"></i> Verificar integridad SHA-256
         </a>
         <?php if (can('auditoria.exportar')): ?>
-        <a href="auditoria.php?export=1&<?php echo e($qs); ?>" class="bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold px-3 py-2 rounded-lg flex items-center gap-1.5">
+        <a href="auditoria.php?export=1&<?php echo e($qs); ?>" class="btn btn-sm btn-primary">
             <i class="fa-solid fa-file-csv"></i> Exportar CSV
         </a>
         <?php endif; ?>
@@ -121,86 +114,108 @@ $qs = http_build_query(array_filter(['usuario' => $fUsuario, 'resultado' => $fRe
 </div>
 
 <?php if ($integridad): ?>
-    <div class="mb-5 p-3 rounded-xl text-xs flex items-center gap-2 <?php echo $integridad[0] ? 'bg-emerald-50 border-l-4 border-emerald-500 text-emerald-800' : 'bg-rose-50 border-l-4 border-rose-500 text-rose-800'; ?>">
-        <i class="fa-solid <?php echo $integridad[0] ? 'fa-circle-check' : 'fa-triangle-exclamation'; ?>"></i>
+    <div class="alert <?php echo $integridad[0] ? 'alert-success' : 'alert-error'; ?>">
         <?php if ($integridad[0]): ?>
-            Verificación correcta: la cadena de <strong><?php echo (int)$integridad[1]; ?></strong> registros está íntegra (ningún evento fue alterado ni eliminado).
+            <strong>Verificación satisfactoria:</strong> la cadena de <strong><?php echo (int)$integridad[1]; ?></strong> registros es íntegra y no ha sido alterada.
         <?php else: ?>
-            <strong>Alerta:</strong> la cadena de hashes se rompe en el registro #<?php echo (int)$integridad[2]; ?>. Existe una alteración en la bitácora.
+            <strong>Alerta de integridad:</strong> la cadena de hashes se rompe en el registro #<?php echo (int)$integridad[2]; ?>. Posible alteración en la base de datos.
         <?php endif; ?>
     </div>
 <?php endif; ?>
 
-<div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
-    <?php foreach ([
-        ['Eventos (24 h)', $s['eventos'], 'fa-list-check', 'bg-sky-50 text-sky-600'],
-        ['Inicios con contraseña', $s['login_ok'], 'fa-key', 'bg-emerald-50 text-emerald-600'],
-        ['Inicios por SSO', $s['sso_ok'], 'fa-brands fa-windows', 'bg-indigo-50 text-indigo-600'],
-        ['Fallos de acceso', $s['login_fallo'], 'fa-user-lock', 'bg-orange-50 text-orange-600'],
-        ['Accesos denegados', $s['denegados'], 'fa-ban', 'bg-rose-50 text-rose-600'],
-    ] as $c): ?>
-        <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl <?php echo $c[3]; ?> flex items-center justify-center"><i class="<?php echo strpos($c[2], 'fa-brands') === 0 ? $c[2] : 'fa-solid ' . $c[2]; ?>"></i></div>
-            <div>
-                <span class="text-[10px] font-semibold text-slate-500 uppercase"><?php echo e($c[0]); ?></span>
-                <div class="text-xl font-bold text-slate-900"><?php echo (int)$c[1]; ?></div>
-            </div>
-        </div>
-    <?php endforeach; ?>
+<div class="figure-row mb-3">
+    <div class="figure">
+        <div class="label">Eventos (24 h)</div>
+        <div class="value"><?php echo (int)$s['eventos']; ?></div>
+    </div>
+    <div class="figure">
+        <div class="label">Inicios con contraseña</div>
+        <div class="value"><?php echo (int)$s['login_ok']; ?></div>
+    </div>
+    <div class="figure">
+        <div class="label">Inicios por SSO</div>
+        <div class="value"><?php echo (int)$s['sso_ok']; ?></div>
+    </div>
+    <div class="figure">
+        <div class="label">Fallos de acceso</div>
+        <div class="value"><?php echo (int)$s['login_fallo']; ?></div>
+    </div>
+    <div class="figure">
+        <div class="label">Accesos denegados</div>
+        <div class="value"><?php echo (int)$s['denegados']; ?></div>
+    </div>
 </div>
 
-<div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-    <form method="GET" action="auditoria.php" class="p-4 border-b border-slate-200 bg-slate-50 grid grid-cols-2 md:grid-cols-12 gap-3 text-xs">
-        <input name="usuario" value="<?php echo e($fUsuario); ?>" maxlength="32" placeholder="Usuario" class="md:col-span-2 py-2 px-3 border border-slate-300 rounded-lg">
-        <input name="accion" value="<?php echo e($fAccion); ?>" maxlength="30" placeholder="Acción (LOGIN, SSO...)" class="md:col-span-3 py-2 px-3 border border-slate-300 rounded-lg">
-        <select name="resultado" class="md:col-span-2 py-2 px-2 border border-slate-300 rounded-lg">
-            <option value="">Todos los resultados</option>
-            <?php foreach (['OK', 'FALLO', 'DENEGADO', 'BLOQUEADO', 'ERROR', 'EXPIRADA'] as $r): ?>
-                <option <?php echo $fResultado === $r ? 'selected' : ''; ?>><?php echo $r; ?></option>
-            <?php endforeach; ?>
-        </select>
-        <input type="date" name="desde" value="<?php echo e($fDesde); ?>" class="md:col-span-3 py-2 px-3 border border-slate-300 rounded-lg">
-        <button class="md:col-span-2 bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2 rounded-lg">Filtrar</button>
-    </form>
-
-    <div class="overflow-x-auto">
-    <table class="w-full text-[11px]">
-        <thead class="bg-slate-50 text-slate-500 uppercase text-[10px] tracking-wider">
-            <tr>
-                <th class="text-left px-3 py-2.5">#</th>
-                <th class="text-left px-3 py-2.5">Fecha</th>
-                <th class="text-left px-3 py-2.5">Usuario</th>
-                <th class="text-left px-3 py-2.5">IP</th>
-                <th class="text-left px-3 py-2.5">Acción</th>
-                <th class="text-left px-3 py-2.5">Resultado</th>
-                <th class="text-left px-3 py-2.5">Detalle</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-slate-100">
-        <?php foreach ($filas as $r): ?>
-            <tr class="hover:bg-slate-50 align-top">
-                <td class="px-3 py-2 font-mono text-slate-400"><?php echo (int)$r['id']; ?></td>
-                <td class="px-3 py-2 whitespace-nowrap text-slate-600"><?php echo e($r['ts']); ?></td>
-                <td class="px-3 py-2 font-semibold text-slate-800"><?php echo e($r['usuario']); ?></td>
-                <td class="px-3 py-2 font-mono text-slate-500"><?php echo e($r['ip']); ?></td>
-                <td class="px-3 py-2 font-mono font-bold text-sky-700"><?php echo e($r['accion']); ?></td>
-                <td class="px-3 py-2"><span class="<?php echo colorResultado($r['resultado']); ?> text-[10px] font-bold px-2 py-0.5 rounded-full"><?php echo e($r['resultado']); ?></span></td>
-                <td class="px-3 py-2 text-slate-600 max-w-md"><?php echo e($r['detalle']); ?></td>
-            </tr>
-        <?php endforeach; ?>
-        <?php if (!$filas): ?>
-            <tr><td colspan="7" class="p-10 text-center text-slate-400">Sin eventos para los filtros seleccionados.</td></tr>
-        <?php endif; ?>
-        </tbody>
-    </table>
+<div class="panel">
+    <div class="panel-body">
+        <form method="GET" action="auditoria.php" class="form form-inline">
+            <div class="form-row">
+                <input name="usuario" value="<?php echo e($fUsuario); ?>" maxlength="32" placeholder="Usuario (ej. clopez)">
+            </div>
+            <div class="form-row">
+                <input name="accion" value="<?php echo e($fAccion); ?>" maxlength="30" placeholder="Acción (LOGIN, SSO...)">
+            </div>
+            <div class="form-row">
+                <select name="resultado">
+                    <option value="">Todos los resultados</option>
+                    <?php foreach (['OK', 'FALLO', 'DENEGADO', 'BLOQUEADO', 'ERROR', 'EXPIRADA'] as $r): ?>
+                        <option value="<?php echo $r; ?>" <?php echo $fResultado === $r ? 'selected' : ''; ?>><?php echo $r; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="form-row">
+                <input type="date" name="desde" value="<?php echo e($fDesde); ?>">
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm">Filtrar</button>
+            <?php if ($fUsuario !== '' || $fResultado !== '' || $fAccion !== '' || $fDesde !== ''): ?>
+                <a href="auditoria.php" class="btn btn-sm">Limpiar</a>
+            <?php endif; ?>
+        </form>
     </div>
 
-    <div class="p-3 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500">
-        <span><?php echo $totalFilas; ?> eventos · página <?php echo $pagina; ?> de <?php echo $paginas; ?></span>
-        <span class="flex gap-2">
-            <?php if ($pagina > 1): ?><a class="px-3 py-1 bg-white border rounded" href="auditoria.php?<?php echo e($qs); ?>&p=<?php echo $pagina - 1; ?>">« Anterior</a><?php endif; ?>
-            <?php if ($pagina < $paginas): ?><a class="px-3 py-1 bg-white border rounded" href="auditoria.php?<?php echo e($qs); ?>&p=<?php echo $pagina + 1; ?>">Siguiente »</a><?php endif; ?>
-        </span>
+    <div class="table-wrap">
+        <table class="table table-compact">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Fecha y hora</th>
+                    <th>Usuario</th>
+                    <th>Dirección IP</th>
+                    <th>Acción</th>
+                    <th>Resultado</th>
+                    <th>Detalle del evento</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($filas as $r): ?>
+                <tr>
+                    <td class="mono small muted"><?php echo (int)$r['id']; ?></td>
+                    <td class="nowrap small muted"><?php echo e($r['ts']); ?></td>
+                    <td class="nowrap strong"><?php echo e($r['usuario']); ?></td>
+                    <td class="mono small"><?php echo e($r['ip']); ?></td>
+                    <td class="mono strong nowrap"><?php echo e($r['accion']); ?></td>
+                    <td class="nowrap"><span class="badge <?php echo colorResultado($r['resultado']); ?>"><?php echo e($r['resultado']); ?></span></td>
+                    <td class="small"><?php echo e($r['detalle']); ?></td>
+                </tr>
+            <?php endforeach; ?>
+            <?php if (!$filas): ?>
+                <tr><td colspan="7" class="empty">Sin eventos para los filtros seleccionados.</td></tr>
+            <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel-foot flex between items-center">
+        <span><?php echo $totalFilas; ?> eventos encontrados · página <?php echo $pagina; ?> de <?php echo $paginas; ?></span>
+        <nav class="pager">
+            <?php if ($pagina > 1): ?>
+                <a href="auditoria.php?<?php echo e($qs); ?>&p=<?php echo $pagina - 1; ?>">« Anterior</a>
+            <?php endif; ?>
+            <span class="current"><?php echo $pagina; ?></span>
+            <?php if ($pagina < $paginas): ?>
+                <a href="auditoria.php?<?php echo e($qs); ?>&p=<?php echo $pagina + 1; ?>">Siguiente »</a>
+            <?php endif; ?>
+        </nav>
     </div>
 </div>
 

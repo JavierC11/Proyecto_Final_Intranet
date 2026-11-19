@@ -86,7 +86,7 @@ function sendSecurityHeaders(): void
     header('Permissions-Policy: geolocation=(), camera=(), microphone=()');
     // Todos los recursos (Tailwind, iconos, tipografia, fotos) se sirven desde el propio portal: sin dependencia de Internet.
     header("Content-Security-Policy: default-src 'self'; "
-        . "script-src 'self' 'unsafe-inline' 'unsafe-eval'; "
+        . "script-src 'self' 'unsafe-inline'; "
         . "style-src 'self' 'unsafe-inline'; "
         . "font-src 'self' data:; "
         . "img-src 'self' data:; "

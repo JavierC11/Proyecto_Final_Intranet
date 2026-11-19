@@ -38,133 +38,83 @@ if (!empty($GLOBALS['SESION_EXPIRADA'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="es" class="h-full bg-slate-100">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso Centralizado | Grupo Logístico Central</title>
-    <script src="assets/vendor/tailwind.js"></script>
+    <title>Iniciar sesión - Intranet GLC</title>
     <link rel="stylesheet" href="assets/vendor/fontawesome/css/all.min.css">
-    <link href="assets/vendor/inter/inter.css" rel="stylesheet">
-    <style> body { font-family: 'Inter', sans-serif; } </style>
+    <link rel="stylesheet" href="assets/css/intranet.css">
 </head>
-<body class="h-full flex items-center justify-center p-4">
+<body class="login-page">
 
-    <div class="max-w-4xl w-full grid grid-cols-1 md:grid-cols-12 bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
+<div class="login-top">
+    <div class="container">
+        <span class="brand">
+            <span class="brand-mark">GLC</span>
+            <span>
+                <span class="brand-name">Grupo Logístico Central</span>
+                <span class="brand-sub">Intranet corporativa</span>
+            </span>
+        </span>
+    </div>
+</div>
 
-        <div class="md:col-span-5 bg-gradient-to-br from-slate-900 via-sky-950 to-slate-900 text-white p-8 flex flex-col justify-between">
-            <div>
-                <div class="w-12 h-12 rounded-xl bg-sky-500/20 border border-sky-400/30 flex items-center justify-center text-sky-400 mb-4 text-2xl shadow-inner">
-                    <i class="fa-solid fa-truck-fast"></i>
+<div class="login-wrap">
+    <div class="login-box">
+        <div class="login-form">
+            <h1>Iniciar sesión</h1>
+            <p class="muted">Use su usuario y contraseña de red (los mismos de Windows).</p>
+
+            <?php if ($error): ?>
+                <div class="alert alert-error"><?php echo e($error); ?></div>
+            <?php endif; ?>
+            <?php if ($info): ?>
+                <div class="alert alert-info"><?php echo e($info); ?></div>
+            <?php endif; ?>
+
+            <form method="POST" action="login.php" class="form" autocomplete="off">
+                <?php echo csrfField(); ?>
+                <input type="hidden" name="next" value="<?php echo e($next); ?>">
+                <div class="form-row">
+                    <label for="username">Usuario</label>
+                    <input id="username" type="text" name="username" required maxlength="64" placeholder="ej. clopez" autofocus>
+                    <span class="form-help">Sin el dominio: <em>clopez</em>, no <em>clopez@glcentral.local</em></span>
                 </div>
-                <h1 class="text-2xl font-bold tracking-tight text-white mb-1">Grupo Logístico Central</h1>
-                <p class="text-xs text-sky-300 font-semibold uppercase tracking-wider mb-6">Plataforma Intranet Segura</p>
-
-                <div class="space-y-4 text-xs text-slate-300">
-                    <div class="flex items-start gap-2.5">
-                        <i class="fa-solid fa-shield-halved text-emerald-400 mt-0.5 text-sm"></i>
-                        <div>
-                            <strong class="text-white block">Autenticación centralizada</strong>
-                            Las credenciales se validan en Active Directory (<code class="text-sky-300 bg-black/40 px-1 py-0.5 rounded">glcentral.local</code>).
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-2.5">
-                        <i class="fa-solid fa-lock text-sky-400 mt-0.5 text-sm"></i>
-                        <div>
-                            <strong class="text-white block">Conexión cifrada (HTTPS / TLS)</strong>
-                            Certificado emitido por la entidad certificadora interna del dominio.
-                        </div>
-                    </div>
-                    <div class="flex items-start gap-2.5">
-                        <i class="fa-solid fa-clipboard-list text-amber-400 mt-0.5 text-sm"></i>
-                        <div>
-                            <strong class="text-white block">Acceso auditado</strong>
-                            Cada inicio de sesión y cada acción relevante queda registrado en la bitácora.
-                        </div>
-                    </div>
+                <div class="form-row">
+                    <label for="password">Contraseña</label>
+                    <input id="password" type="password" name="password" required maxlength="128">
                 </div>
-            </div>
-            <div class="mt-8 pt-4 border-t border-slate-800 text-[11px] text-slate-400 flex justify-between items-center">
-                <span>Versión 3.0</span>
-                <span class="inline-flex items-center text-emerald-400">
-                    <i class="fa-solid fa-lock text-[10px] mr-1"></i> Sesión protegida
-                </span>
-            </div>
+                <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+            </form>
+
+            <div class="divider">o</div>
+
+            <a href="sso.php?next=<?php echo urlencode($next); ?>" class="btn btn-block">
+                <i class="fa-brands fa-windows"></i> Usar mi sesión de Windows
+            </a>
+            <p class="form-help mt-1">Solo funciona desde equipos unidos al dominio GLCENTRAL.</p>
         </div>
 
-        <div class="md:col-span-7 p-8 flex flex-col justify-between">
-            <div>
-                <div class="flex justify-between items-center mb-6">
-                    <div>
-                        <h2 class="text-xl font-bold text-slate-900">Iniciar Sesión</h2>
-                        <p class="text-xs text-slate-500">Ingrese con su cuenta corporativa de dominio</p>
-                    </div>
-                    <span class="bg-sky-50 text-sky-700 text-[11px] font-bold px-2.5 py-1 rounded-full border border-sky-100 flex items-center gap-1">
-                        <i class="fa-solid fa-key text-[10px]"></i> SSO Portal
-                    </span>
-                </div>
-
-                <?php if ($error): ?>
-                    <div class="mb-4 bg-rose-50 border-l-4 border-rose-500 p-3 rounded text-xs text-rose-700 flex items-center gap-2">
-                        <i class="fa-solid fa-triangle-exclamation text-base text-rose-500"></i>
-                        <span><?php echo e($error); ?></span>
-                    </div>
-                <?php endif; ?>
-                <?php if ($info): ?>
-                    <div class="mb-4 bg-sky-50 border-l-4 border-sky-500 p-3 rounded text-xs text-sky-800 flex items-center gap-2">
-                        <i class="fa-solid fa-circle-info text-base text-sky-500"></i>
-                        <span><?php echo e($info); ?></span>
-                    </div>
-                <?php endif; ?>
-
-                <form method="POST" action="login.php" class="space-y-4" autocomplete="off">
-                    <?php echo csrfField(); ?>
-                    <input type="hidden" name="next" value="<?php echo e($next); ?>">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1" for="username">Usuario de dominio (sAMAccountName)</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 text-sm"><i class="fa-regular fa-user"></i></span>
-                            <input id="username" type="text" name="username" required maxlength="64" placeholder="ejemplo: clopez"
-                                   class="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition">
-                        </div>
-                        <span class="text-[11px] text-slate-400 mt-0.5 block">Dominio asignado: @glcentral.local</span>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-700 mb-1" for="password">Contraseña</label>
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 text-sm"><i class="fa-solid fa-lock"></i></span>
-                            <input id="password" type="password" name="password" required maxlength="128" placeholder="••••••••••••"
-                                   class="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition">
-                        </div>
-                    </div>
-
-                    <button type="submit"
-                            class="w-full bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 text-white font-semibold py-2.5 px-4 rounded-lg text-sm shadow-md transition duration-150 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Iniciar sesión con credenciales de dominio
-                    </button>
-                </form>
-
-                <div class="flex items-center gap-3 my-4">
-                    <div class="flex-1 border-t border-slate-200"></div>
-                    <span class="text-[11px] text-slate-400 uppercase tracking-wider">o bien</span>
-                    <div class="flex-1 border-t border-slate-200"></div>
-                </div>
-
-                <a href="sso.php?next=<?php echo urlencode($next); ?>"
-                   class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-lg text-sm shadow-sm transition duration-150 flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-windows"></i> Ingresar con mi sesión de Windows (SSO)
-                </a>
-                <p class="text-[11px] text-slate-400 mt-2 text-center">
-                    Disponible en equipos del dominio. El servidor valida su identidad mediante Kerberos / NTLM, sin pedir la contraseña de nuevo.
-                </p>
-            </div>
-
-            <div class="mt-6 text-center text-[11px] text-slate-400">
-                Universidad Mariano Gálvez de Guatemala • Maestría en Informática 2026
-            </div>
+        <div class="login-info">
+            <h2>¿Problemas para ingresar?</h2>
+            <ul class="list list-links mb-3">
+                <li>Si olvidó su contraseña o su cuenta está bloqueada, llame a la Mesa de Ayuda de TI a la <strong>extensión 1004</strong>.</li>
+                <li>Después de 5 intentos fallidos la cuenta se bloquea durante 10 minutos.</li>
+                <li>La sesión se cierra sola tras 15 minutos sin actividad.</li>
+            </ul>
+            <h2>Aviso</h2>
+            <p class="small">Este sistema es para uso exclusivo del personal de Grupo Logístico Central, S.A. Los accesos quedan registrados.</p>
         </div>
     </div>
+</div>
+
+<footer class="site-footer">
+    <div class="container">
+        <span>© <?php echo date('Y'); ?> Grupo Logístico Central, S.A.</span>
+        <span>Proyecto final · Maestría en Informática, Universidad Mariano Gálvez</span>
+    </div>
+</footer>
 
 </body>
 </html>

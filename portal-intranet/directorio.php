@@ -1,5 +1,6 @@
 <?php
-$pageTitle = "Directorio Corporativo de Empleados";
+$pageTitle = 'Directorio de empleados';
+$pageDesc  = 'Extensiones telefónicas, correos y ubicación del personal sincronizados con Active Directory.';
 require_once __DIR__ . '/includes/header.php';
 
 // Catálogo de colaboradores sincronizados con Active Directory
@@ -115,126 +116,103 @@ $empleadosFiltrados = array_filter($empleados, function($emp) use ($deptoFilter,
                    str_contains($emp['extension'], $searchTerm);
     return $matchDepto && $matchSearch;
 });
+
+$deptos = [
+    'todos'                          => 'Todos los departamentos',
+    'Tecnologías de la Información' => 'Tecnologías de la Información',
+    'Recursos Humanos'               => 'Recursos Humanos',
+    'Administración y Finanzas'      => 'Administración y Finanzas',
+    'Operaciones y Logística'        => 'Operaciones y Logística',
+];
 ?>
 
-<!-- Encabezado de la página -->
-<div class="mb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-    <div>
-        <h1 class="text-2xl font-bold text-slate-900 flex items-center gap-2.5">
-            <i class="fa-solid fa-address-book text-sky-600"></i> Directorio Telefónico y de Empleados
-        </h1>
-        <p class="text-xs text-slate-500 mt-1">
-            Consulta en tiempo real sincronizada con el servicio de catálogo global de <strong>Active Directory (LDAP / DC01)</strong>.
-        </p>
-    </div>
-    <div class="flex items-center gap-2">
-        <span class="bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1.5 rounded-lg border border-emerald-200 flex items-center gap-1.5">
-            <i class="fa-solid fa-database text-emerald-500"></i> Catálogo AD Sincronizado
-        </span>
-    </div>
-</div>
+<nav class="tabs">
+    <?php foreach ($deptos as $key => $label): ?>
+        <a href="directorio.php?depto=<?php echo urlencode($key); ?><?php echo $searchTerm !== '' ? '&q=' . urlencode($searchTerm) : ''; ?>"
+           class="<?php echo $deptoFilter === $key ? 'active' : ''; ?>">
+            <?php echo e($label); ?>
+        </a>
+    <?php endforeach; ?>
+</nav>
 
-<!-- Barra de Filtros y Búsqueda -->
-<div class="bg-white rounded-xl border border-slate-200 p-4 mb-6 shadow-sm">
-    <form method="GET" action="directorio.php" class="grid grid-cols-1 md:grid-cols-12 gap-3">
-        <div class="md:col-span-6 relative">
-            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-slate-400 text-sm">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </span>
-            <input type="text" name="q" value="<?php echo htmlspecialchars($searchTerm); ?>" 
-                   placeholder="Buscar por nombre, cargo, correo o extensión..." 
-                   class="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition">
+<div class="toolbar">
+    <form method="GET" action="directorio.php" class="form form-inline">
+        <input type="hidden" name="depto" value="<?php echo e($deptoFilter); ?>">
+        <div class="form-row">
+            <input type="search" name="q" value="<?php echo e($searchTerm); ?>" placeholder="Buscar por nombre, cargo, correo o extensión..." style="min-width: 280px;">
         </div>
-
-        <div class="md:col-span-4">
-            <select name="depto" class="w-full py-2 px-3 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition">
-                <option value="todos" <?php echo $deptoFilter === 'todos' ? 'selected' : ''; ?>>Todos los Departamentos</option>
-                <option value="Tecnologías de la Información" <?php echo $deptoFilter === 'Tecnologías de la Información' ? 'selected' : ''; ?>>Tecnologías de la Información</option>
-                <option value="Recursos Humanos" <?php echo $deptoFilter === 'Recursos Humanos' ? 'selected' : ''; ?>>Recursos Humanos</option>
-                <option value="Administración y Finanzas" <?php echo $deptoFilter === 'Administración y Finanzas' ? 'selected' : ''; ?>>Administración y Finanzas</option>
-                <option value="Operaciones y Logística" <?php echo $deptoFilter === 'Operaciones y Logística' ? 'selected' : ''; ?>>Operaciones y Logística</option>
-            </select>
-        </div>
-
-        <div class="md:col-span-2 flex gap-2">
-            <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2 px-4 rounded-lg text-sm transition">
-                Filtrar
-            </button>
-            <?php if (!empty($searchTerm) || $deptoFilter !== 'todos'): ?>
-                <a href="directorio.php" class="bg-slate-100 hover:bg-slate-200 text-slate-600 px-3 py-2 rounded-lg text-sm transition flex items-center justify-center" title="Limpiar filtros">
-                    <i class="fa-solid fa-xmark"></i>
-                </a>
-            <?php endif; ?>
-        </div>
+        <button type="submit" class="btn btn-sm btn-primary">Buscar</button>
+        <?php if (!empty($searchTerm) || $deptoFilter !== 'todos'): ?>
+            <a href="directorio.php" class="btn btn-sm">Limpiar filtros</a>
+        <?php endif; ?>
     </form>
+    <span class="muted small"><?php echo count($empleadosFiltrados); ?> colaboradores encontrados</span>
 </div>
 
-<!-- Listado de Colaboradores en Tarjetas Modernas -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+<div class="panel">
     <?php if (empty($empleadosFiltrados)): ?>
-        <div class="col-span-full bg-white rounded-xl border border-slate-200 p-12 text-center">
-            <div class="w-16 h-16 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto text-2xl mb-3">
-                <i class="fa-solid fa-user-slash"></i>
+        <div class="panel-body">
+            <div class="empty">
+                <p>No se encontraron colaboradores que coincidan con los criterios de búsqueda.</p>
+                <?php if (!empty($searchTerm) || $deptoFilter !== 'todos'): ?>
+                    <a href="directorio.php" class="btn btn-sm">Ver todos los colaboradores</a>
+                <?php endif; ?>
             </div>
-            <h3 class="text-base font-bold text-slate-800 mb-1">No se encontraron colaboradores</h3>
-            <p class="text-xs text-slate-500">Intenta con otros términos de búsqueda o selecciona "Todos los departamentos".</p>
         </div>
     <?php else: ?>
-        <?php foreach ($empleadosFiltrados as $emp): ?>
-            <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm hover:shadow-md hover:border-sky-300 transition flex flex-col justify-between">
-                <div>
-                    <!-- Header de la tarjeta -->
-                    <div class="flex items-start gap-3.5 mb-3.5">
-                        <img src="<?php echo htmlspecialchars($emp['foto']); ?>" alt="Foto" 
-                             class="w-12 h-12 rounded-full object-cover border-2 border-slate-200 shadow-inner flex-shrink-0">
-                        <div class="min-w-0">
-                            <h3 class="text-sm font-bold text-slate-900 truncate" title="<?php echo htmlspecialchars($emp['nombre']); ?>">
-                                <?php echo htmlspecialchars($emp['nombre']); ?>
-                            </h3>
-                            <p class="text-xs text-sky-700 font-medium truncate" title="<?php echo htmlspecialchars($emp['cargo']); ?>">
-                                <?php echo htmlspecialchars($emp['cargo']); ?>
-                            </p>
-                            <span class="inline-block mt-1 text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-100 text-slate-600">
-                                <?php echo htmlspecialchars($emp['depto']); ?>
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Datos de contacto -->
-                    <div class="space-y-2 text-xs text-slate-600 pt-3 border-t border-slate-100">
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-phone text-slate-400 w-4 text-center"></i>
-                            <span>Extensión: <strong class="text-slate-800 font-mono"><?php echo htmlspecialchars($emp['extension']); ?></strong></span>
-                        </div>
-                        <div class="flex items-center gap-2 truncate">
-                            <i class="fa-regular fa-envelope text-slate-400 w-4 text-center"></i>
-                            <a href="mailto:<?php echo htmlspecialchars($emp['email']); ?>" class="text-sky-600 hover:underline truncate">
-                                <?php echo htmlspecialchars($emp['email']); ?>
-                            </a>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-location-dot text-slate-400 w-4 text-center"></i>
-                            <span class="truncate"><?php echo htmlspecialchars($emp['sede']); ?></span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Footer de la tarjeta con estado -->
-                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
-                    <span class="inline-flex items-center gap-1.5 text-slate-500">
-                        <?php if ($emp['estado'] === 'Disponible'): ?>
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                        <?php elseif ($emp['estado'] === 'En Reunión'): ?>
-                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                        <?php else: ?>
-                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                        <?php endif; ?>
-                        <?php echo htmlspecialchars($emp['estado']); ?>
-                    </span>
-                    <span class="text-slate-400 font-mono text-[10px]"><?php echo htmlspecialchars($emp['id']); ?></span>
-                </div>
-            </div>
-        <?php endforeach; ?>
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Colaborador</th>
+                        <th>Cargo</th>
+                        <th>Departamento</th>
+                        <th>Extensión</th>
+                        <th>Correo electrónico</th>
+                        <th>Sede</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($empleadosFiltrados as $emp):
+                    $dotClass = match($emp['estado']) {
+                        'Disponible' => 'dot-green',
+                        'En Reunión' => 'dot-amber',
+                        default      => 'dot-blue'
+                    };
+                    $badgeClass = match($emp['estado']) {
+                        'Disponible' => 'badge-green',
+                        'En Reunión' => 'badge-amber',
+                        default      => 'badge-gray'
+                    };
+                ?>
+                    <tr>
+                        <td>
+                            <div class="person">
+                                <img class="avatar avatar-sm" src="<?php echo e($emp['foto']); ?>" alt="">
+                                <div>
+                                    <span class="person-name"><?php echo e($emp['nombre']); ?></span>
+                                    <span class="person-meta mono small"><?php echo e($emp['id']); ?></span>
+                                </div>
+                            </div>
+                        </td>
+                        <td><?php echo e($emp['cargo']); ?></td>
+                        <td><?php echo e($emp['depto']); ?></td>
+                        <td class="nowrap"><strong class="mono"><?php echo e($emp['extension']); ?></strong></td>
+                        <td class="nowrap"><a href="mailto:<?php echo e($emp['email']); ?>"><?php echo e($emp['email']); ?></a></td>
+                        <td class="small muted"><?php echo e($emp['sede']); ?></td>
+                        <td class="nowrap">
+                            <span class="badge <?php echo $badgeClass; ?>"><span class="dot <?php echo $dotClass; ?>"></span><?php echo e($emp['estado']); ?></span>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-foot flex between items-center">
+            <span>Catálogo sincronizado con Active Directory (glcentral.local).</span>
+            <span class="muted small"><?php echo count($empleadosFiltrados); ?> colaboradores</span>
+        </div>
     <?php endif; ?>
 </div>
 
